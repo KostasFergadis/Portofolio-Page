@@ -135,6 +135,52 @@ a {
   color: var(--text-subtle);
 }
 
+/* Full-bleed colour bands. Each re-points the theme tokens, so everything
+   inside (buttons, links, icons) adapts without extra rules. */
+.band {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.band .section {
+  border-top: 0;
+}
+
+.band--ink {
+  --bg: #14302a;
+  --surface: #1d4038;
+  --text: #f1f5f2;
+  --text-muted: #bfd0c8;
+  --accent: #9fd3c1;
+  --accent-contrast: #14302a;
+}
+
+:root[data-theme="dark"] .band--ink {
+  --bg: #183a32;
+  --surface: #21483f;
+}
+
+.band--ink .button--primary {
+  border-color: var(--tag);
+  background: var(--tag);
+  color: var(--tag-text);
+}
+
+.band--ink .button--primary:hover {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.band--tag {
+  --bg: #f4c430;
+  --surface: #f8d665;
+  --text: #14302a;
+  --text-muted: #2e4740;
+  --accent: #14302a;
+  --tag: #14302a; /* underlines and highlights turn spruce on yellow */
+}
+
 /* ---------- Shared components ---------- */
 
 .button {

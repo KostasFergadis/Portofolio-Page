@@ -1,4 +1,5 @@
 import { profile, receipt } from "../data/content";
+import { useSway } from "../hooks/useSway";
 import "./Receipt.css";
 
 const Rows = ({ rows }) => (
@@ -12,31 +13,38 @@ const Rows = ({ rows }) => (
   </dl>
 );
 
-const Receipt = () => (
-  <aside className="receipt-wrap" aria-label="Summary">
-    <div className="receipt">
-      <p className="receipt__head">
-        <strong>{profile.name}</strong>
-        <br />
-        {profile.role}
-        <br />
-        {profile.location}
-      </p>
+const Receipt = () => {
+  const swayRef = useSway();
 
-      <Rows rows={receipt.roles} />
-      <Rows rows={receipt.items} />
+  return (
+    <aside className="printer" aria-label="Summary">
+      <div className="printer__slot" aria-hidden="true" />
+      <div className="printer__output">
+        <div className="receipt" ref={swayRef}>
+          <p className="receipt__head">
+            <strong>{profile.name}</strong>
+            <br />
+            {profile.role}
+            <br />
+            {profile.location}
+          </p>
 
-      <div className="receipt__row receipt__total">
-        <span>Total</span>
-        <span>{receipt.total}</span>
+          <Rows rows={receipt.roles} />
+          <Rows rows={receipt.items} />
+
+          <div className="receipt__row receipt__total">
+            <span>Total</span>
+            <span>{receipt.total}</span>
+          </div>
+
+          <div className="receipt__barcode" aria-hidden="true" />
+          <a className="receipt__email" href={`mailto:${profile.email}`}>
+            {profile.email}
+          </a>
+        </div>
       </div>
-
-      <div className="receipt__barcode" aria-hidden="true" />
-      <a className="receipt__email" href={`mailto:${profile.email}`}>
-        {profile.email}
-      </a>
-    </div>
-  </aside>
-);
+    </aside>
+  );
+};
 
 export default Receipt;
