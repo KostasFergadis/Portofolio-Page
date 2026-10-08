@@ -1,0 +1,22 @@
+.contact {
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+}
+
+.contact__email {
+  font-size: clamp(1.5rem, 5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--text);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: var(--tag);
+  text-decoration-thickness: 0.18em;
+  text-underline-offset: 0.12em;
+}
+
+.contact__email:hover {
+  text-decoration-color: var(--accent);
+}

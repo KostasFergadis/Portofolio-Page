@@ -1,25 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kostas Fergadis</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <!-- Add the Bootstrap CSS -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Kalam"
-      rel="stylesheet"
+    <title>Kostas Fergadis — Software Engineer</title>
+    <meta
+      name="description"
+      content="Kostas Fergadis is a full-stack software engineer in Athens building production web applications with PHP, Laravel and JavaScript."
     />
+    <meta property="og:title" content="Kostas Fergadis — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Full-stack developer working with PHP, Laravel, JavaScript and MySQL."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;700&family=Schibsted+Grotesk:wght@400..800&display=swap"
     />
+
+    <!-- Apply the saved (or OS) theme before first paint to avoid a flash. -->
+    <script>
+      (() => {
+        let theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch {}
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <!-- Add the Bootstrap JavaScript bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Load the Vite JavaScript bundle -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,0 +1,205 @@
+/* ---------- Design tokens ---------- */
+
+:root {
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-receipt: "Martian Mono", ui-monospace, Menlo, monospace;
+
+  --header-height: 4rem;
+  --container: 68rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+
+  /* Sage ground, spruce ink, shelf-label yellow. */
+  --bg: #e7ebe5;
+  --surface: #f1f4ef;
+  --border: #cfd6cd;
+  --border-strong: #a9b4aa;
+  --text: #14302a;
+  --text-muted: #3b5049;
+  --text-subtle: #56675f;
+  --accent: #1d6b55;
+  --accent-contrast: #fdfdfb;
+  --tag: #f4c430;
+  --tag-text: #14302a;
+
+  color-scheme: light;
+}
+
+/* No-JS fallback: follow the OS when the theme script hasn't set data-theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0f201b;
+    --surface: #162a24;
+    --border: #29403a;
+    --border-strong: #3f5a52;
+    --text: #edf2ee;
+    --text-muted: #bccac3;
+    --text-subtle: #8fa39a;
+    --accent: #9fd3c1;
+    --accent-contrast: #0f201b;
+    --tag: #f4c430;
+    --tag-text: #14302a;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f201b;
+  --surface: #162a24;
+  --border: #29403a;
+  --border-strong: #3f5a52;
+  --text: #edf2ee;
+  --text-muted: #bccac3;
+  --text-subtle: #8fa39a;
+  --accent: #9fd3c1;
+  --accent-contrast: #0f201b;
+  --tag: #f4c430;
+  --tag-text: #14302a;
+
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.footer {
+  padding-block: 2rem 3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--text-subtle);
+}
+
+/* ---------- Shared components ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 2.875rem;
+  padding-inline: 1.25rem;
+  border: 2px solid var(--text);
+  border-radius: 6px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.button:hover {
+  background: var(--surface);
+}
+
+.button--primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.button--primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.icon-button:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.social-links {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* "Built with ..." line under jobs and projects. */
+.stack {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.stack span {
+  font-weight: 600;
+  color: var(--text);
+}

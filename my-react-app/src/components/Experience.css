@@ -1,0 +1,36 @@
+.timeline {
+  display: grid;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline__role {
+  margin: 0;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.timeline__company {
+  color: var(--accent);
+}
+
+.timeline__meta {
+  margin: 0.25rem 0 0;
+  color: var(--text-subtle);
+}
+
+.timeline__highlights {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 68ch;
+  margin: 1.125rem 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+}
+
+.timeline__highlights li::marker {
+  color: var(--text-subtle);
+}

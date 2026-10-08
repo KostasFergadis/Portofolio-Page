@@ -1,0 +1,57 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  height: var(--header-height);
+}
+
+.header__brand {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.header__nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.header__link {
+  padding-block: 0.25rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.header__link:hover {
+  color: var(--text);
+}
+
+.header__link[aria-current="true"] {
+  color: var(--text);
+  border-bottom-color: var(--tag);
+}
+
+/* On small screens the page is short enough to scroll; keep the bar minimal. */
+@media (max-width: 720px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header .icon-button {
+    margin-left: auto;
+  }
+}
