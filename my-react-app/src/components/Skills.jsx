@@ -1,9 +1,9 @@
-import { skills } from "../data/content";
+import { leads, skills } from "../data/content";
 import Section from "./Section";
 import "./Skills.css";
 
 const Skills = () => (
-  <Section id="skills" title="Skills" intro="Tagged in yellow: what I work with every day.">
+  <Section id="skills" lead={leads.skills} title="Skills" intro="Tagged in yellow: what I work with every day.">
     <dl className="skills">
       {skills.groups.map(({ title, items }) => (
         <div key={title} className="skills__row">

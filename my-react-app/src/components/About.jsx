@@ -1,9 +1,9 @@
-import { about } from "../data/content";
+import { leads, about } from "../data/content";
 import Section from "./Section";
 import "./About.css";
 
 const About = () => (
-  <Section id="about" title="About">
+  <Section id="about" lead={leads.about} title="About">
     <div className="about">
       <div className="about__text">
         {about.paragraphs.map((text) => (

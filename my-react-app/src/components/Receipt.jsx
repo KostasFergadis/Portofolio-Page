@@ -37,6 +37,8 @@ const Receipt = () => {
             <span>{receipt.total}</span>
           </div>
 
+          <p className="receipt__thanks">{receipt.thanks}</p>
+
           <div className="receipt__barcode" aria-hidden="true" />
           <a className="receipt__email" href={`mailto:${profile.email}`}>
             {profile.email}

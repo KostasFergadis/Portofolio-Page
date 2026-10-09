@@ -14,7 +14,7 @@ export const profile = {
   role: "Software Engineer",
   location: "Athens, Greece",
   headline:
-    "Full-stack developer with two years of production experience building e-commerce features and internal tools in PHP, Laravel and JavaScript.",
+    "Full-stack developer with two years of production experience building e-commerce features and internal tools in PHP and JavaScript.",
   email: "kostasfergadis74@gmail.com",
   links: {
     github: `https://github.com/${GITHUB_USER}`,
@@ -29,18 +29,19 @@ export const receipt = {
     { label: "General Assembly", value: "2023" },
   ],
   items: [
-    { label: "PHP + Laravel", value: "backend" },
+    { label: "PHP", value: "backend" },
     { label: "JavaScript + jQuery", value: "frontend" },
     { label: "MySQL + REST APIs", value: "data" },
     { label: "Git + Bitbucket", value: "workflow" },
   ],
   total: "Full stack",
+  thanks: "Thank you, come again!",
 };
 
 export const about = {
   paragraphs: [
-    "I'm a full-stack software engineer based in Athens. Since 2024 I've been building and maintaining production web applications at Sklavenitis, one of Greece's largest supermarket chains — working across Laravel backends, SQL databases and JavaScript frontends.",
-    "I came to software from a background in game art and animation, which still shapes how I think about interfaces. I made the switch through General Assembly's Software Engineering Immersive, and I enjoy the whole stack: turning a Figma design into a working feature, then making the queries and APIs behind it fast and reliable.",
+    "I'm a full-stack developer in Athens. Since 2024 I've worked at Sklavenitis, one of Greece's biggest supermarket chains, on PHP backends, SQL databases and JavaScript frontends. It's mostly plain PHP, with some Laravel on the e-commerce side when I started.",
+    "I got into programming through games. I'm competitive and I pick up new games fast, and I think that carries over to code: learn the rules, find what works, get better quickly. But the best part was never winning. It was the moment a puzzle finally clicked after I'd been stuck on it for a day or two. Code gives me that feeling all the time, so I did General Assembly's Software Engineering Immersive and switched careers.",
   ],
   facts: [
     { label: "Based in", value: "Athens, Greece" },
@@ -51,7 +52,7 @@ export const about = {
     },
     {
       label: "Off-screen",
-      value: "PC building, AI, calisthenics, music, travel",
+      value: "Gaming, PC building, AI, calisthenics, music, travel",
     },
   ],
 };
@@ -63,12 +64,13 @@ export const experience = [
     location: "Athens",
     period: "Sep 2024 — Present",
     highlights: [
-      "Build and maintain e-commerce features in Laravel and JavaScript/jQuery from Figma designs — cart calculations, product displays, address logic and checkout fixes.",
-      "Integrated a legacy security system into the internal portal using PHP backend classes and DataTables-driven record views.",
-      "Write secure CRUD operations and optimise SQL queries and joins behind REST endpoints.",
+      "Moved a security tool that only ran on one local machine into the internal portal, so the whole team and its users can now reach it from any company computer. Built with PHP backend classes and DataTables record views.",
+      "Converted large data tables to server-side rendering and reworked the SQL queries and joins behind them, cutting page load times by several seconds.",
+      "Shipped a steady stream of e-commerce features and bug fixes in PHP (some Laravel early on) and JavaScript/jQuery from Figma designs: cart calculations, product displays, address logic and checkout fixes.",
+      "Got productive quickly with little hand-holding, and take full ownership of assigned work so senior developers can stay focused on their own.",
       "Work in Jira-tracked Agile sprints with code review through Bitbucket pull requests, running the project locally in Docker.",
     ],
-    stack: ["PHP", "Laravel", "JavaScript", "jQuery", "MySQL", "Git", "Bitbucket"],
+    stack: ["PHP", "JavaScript", "jQuery", "MySQL", "Git", "Bitbucket", "some Laravel"],
   },
   {
     role: "Software Engineering Immersive",
@@ -105,7 +107,7 @@ export const skills = {
   groups: [
     {
       title: "Backend",
-      items: ["PHP", "Laravel", "Node.js", "Express", "Python", "Django", "REST APIs"],
+      items: ["PHP", "Node.js", "Express", "Python", "Django", "REST APIs", "Laravel"],
     },
     {
       title: "Frontend",
@@ -128,6 +130,7 @@ export const projects = {
   items: [
     {
       title: "Gamers Assemble",
+      build: { value: "17", unit: "days · solo" },
       image: gamersAssembleImg,
       description:
         "A platform for gamers to form groups around multiplayer titles, with profiles, group chat, ratings and moderation tools for group owners. Solo project, 17 days.",
@@ -141,6 +144,7 @@ export const projects = {
     },
     {
       title: "Foods Paradise",
+      build: { value: "13", unit: "days · team of 3" },
       image: foodsParadiseImg,
       description:
         "Discover dishes by country, save them to a personal list and leave reviews. Team of three, 13 days — I built the My List page and helped deliver reviews.",
@@ -152,6 +156,7 @@ export const projects = {
     },
     {
       title: "Game of Quotes",
+      build: { value: "API", unit: "front end only" },
       image: gameOfQuotesImg,
       description:
         "Search Game of Thrones characters and browse their notable quotes, powered by a public REST API.",
@@ -163,6 +168,7 @@ export const projects = {
     },
     {
       title: "Tetris",
+      build: { value: "13", unit: "days · first build" },
       image: tetrisImg,
       description:
         "A from-scratch Tetris clone with rotation, line clearing, scoring and three speed levels. My first project, built in 13 days.",
@@ -173,6 +179,14 @@ export const projects = {
       ],
     },
   ],
+};
+
+// Statement headings shown above each section's content.
+export const leads = {
+  about: "I build the feature, then the queries behind it.",
+  experience: "Two years shipping to a national retailer.",
+  skills: "What I use every day, and what I know around it.",
+  projects: "Four builds, each under three weeks.",
 };
 
 export const navigation = [

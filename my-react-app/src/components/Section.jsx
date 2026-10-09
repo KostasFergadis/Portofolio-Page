@@ -1,11 +1,12 @@
 import "./Section.css";
 
-const Section = ({ id, title, intro, children }) => (
+const Section = ({ id, title, lead, intro, children }) => (
   <section id={id} className="section container" aria-labelledby={`${id}-title`}>
     <h2 id={`${id}-title`} className="section__title section__header">
       {title}
     </h2>
     <div>
+      {lead && <p className="section__lead">{lead}</p>}
       {intro && <p className="section__intro">{intro}</p>}
       {children}
     </div>

@@ -26,6 +26,17 @@
   color: var(--text-muted);
 }
 
+/* Statement heading that opens each section's content. */
+.section__lead {
+  max-width: 22ch;
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
 @media (max-width: 820px) {
   .section {
     grid-template-columns: 1fr;

@@ -1,9 +1,9 @@
-import { experience } from "../data/content";
+import { leads, experience } from "../data/content";
 import Section from "./Section";
 import "./Experience.css";
 
 const Experience = () => (
-  <Section id="experience" title="Experience">
+  <Section id="experience" lead={leads.experience} title="Experience">
     <ol className="timeline">
       {experience.map((job) => (
         <li key={`${job.company}-${job.period}`} className="timeline__item">

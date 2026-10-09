@@ -72,3 +72,28 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Build time reads like a line total on a till receipt. */
+.project__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project__build {
+  margin: 0;
+  font-family: var(--font-receipt);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: right;
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+.project__build b {
+  display: block;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}

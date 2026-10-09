@@ -98,9 +98,16 @@
   font-weight: 700;
 }
 
+.receipt__thanks {
+  margin: 1rem 0 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .receipt__barcode {
   height: 2.75rem;
-  margin: 1.5rem 0.5rem 0.5rem;
+  margin: 1rem 0.5rem 0.5rem;
   background: repeating-linear-gradient(
     90deg,
     var(--thermal) 0 2px,

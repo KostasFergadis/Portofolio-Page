@@ -1,9 +1,9 @@
-import { projects } from "../data/content";
+import { leads, projects } from "../data/content";
 import Icon from "./Icon";
 import Section from "./Section";
 import "./Projects.css";
 
-const Project = ({ title, image, description, note, stack, links }) => (
+const Project = ({ title, build, image, description, note, stack, links }) => (
   <article className="project">
     <img
       className="project__image"
@@ -16,7 +16,13 @@ const Project = ({ title, image, description, note, stack, links }) => (
     />
 
     <div className="project__body">
-      <h3 className="project__title">{title}</h3>
+      <div className="project__head">
+        <h3 className="project__title">{title}</h3>
+        <p className="project__build">
+          <b>{build.value}</b>
+          {build.unit}
+        </p>
+      </div>
       <p className="project__description">{description}</p>
       {note && <p className="project__note">{note}</p>}
       <p className="stack">
@@ -36,7 +42,7 @@ const Project = ({ title, image, description, note, stack, links }) => (
 );
 
 const Projects = () => (
-  <Section id="projects" title="Projects" intro={projects.intro}>
+  <Section id="projects" lead={leads.projects} title="Projects" intro={projects.intro}>
     <div className="projects">
       {projects.items.map((project) => (
         <Project key={project.title} {...project} />
