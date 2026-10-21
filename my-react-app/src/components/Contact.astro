@@ -1,0 +1,41 @@
+---
+import { profile } from "../data/content";
+import Section from "./Section.astro";
+import SocialLinks from "./SocialLinks.astro";
+import "./Contact.css";
+---
+
+<div class="band band--ink">
+  <Section
+    id="contact"
+    title="Contact"
+    lead="Have something to build?"
+    intro="I'm open to full-stack roles. Email is the fastest way to reach me."
+  >
+    <div class="contact">
+      <div class="contact__address">
+        <a class="contact__email" href={`mailto:${profile.email}`}>
+          {profile.email}
+        </a>
+        <button type="button" class="contact__copy" data-copy={profile.email}>Copy</button>
+      </div>
+      <SocialLinks />
+    </div>
+  </Section>
+</div>
+
+<script>
+  const button = document.querySelector("[data-copy]");
+  let timer = 0;
+
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.copy);
+      button.textContent = "Copied";
+      clearTimeout(timer);
+      timer = setTimeout(() => (button.textContent = "Copy"), 1800);
+    } catch {
+      // Clipboard can be blocked; the address is still selectable text.
+    }
+  });
+</script>

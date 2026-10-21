@@ -1,0 +1,24 @@
+---
+import { leads, about } from "../data/content";
+import Section from "./Section.astro";
+import "./About.css";
+---
+
+<Section id="about" lead={leads.about} title="About">
+  <div class="about">
+    <div class="about__text">
+      {about.paragraphs.map((text) => <p>{text}</p>)}
+    </div>
+
+    <dl class="about__facts">
+      {
+        about.facts.map(({ label, value }) => (
+          <div class="about__fact">
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</Section>

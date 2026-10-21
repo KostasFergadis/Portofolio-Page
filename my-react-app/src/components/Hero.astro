@@ -1,0 +1,29 @@
+---
+import { profile } from "../data/content";
+import Receipt from "./Receipt.astro";
+import SocialLinks from "./SocialLinks.astro";
+import "./Hero.css";
+
+const [firstName, lastName] = profile.name.split(" ");
+---
+
+<div class="band band--ink">
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero__intro">
+      <h1 id="hero-title" class="hero__title">
+        {firstName}
+        <br />
+        {lastName}
+      </h1>
+      <p class="hero__headline">{profile.headline}</p>
+
+      <div class="hero__actions">
+        <a class="button button--primary" href={`mailto:${profile.email}`}>Email me</a>
+        <a class="button" href="#experience">See my experience</a>
+        <SocialLinks />
+      </div>
+    </div>
+
+    <Receipt />
+  </section>
+</div>

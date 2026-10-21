@@ -45,6 +45,12 @@
   border-bottom-color: var(--tag);
 }
 
+/* Show the icon for the theme the button switches to. */
+:root[data-theme="dark"] [data-theme-icon="moon"],
+:root:not([data-theme="dark"]) [data-theme-icon="sun"] {
+  display: none;
+}
+
 /* On small screens the page is short enough to scroll; keep the bar minimal. */
 @media (max-width: 720px) {
   .header__nav {

@@ -1,0 +1,76 @@
+---
+import { navigation, profile } from "../data/content";
+import Icon from "./Icon.astro";
+import "./Header.css";
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="#top">
+      {profile.name}
+    </a>
+
+    <nav class="header__nav" aria-label="Main">
+      {
+        navigation.map(({ id, label }) => (
+          <a href={`#${id}`} class="header__link" data-section={id}>
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Both icons are rendered; CSS shows the one matching the current theme. -->
+    <button type="button" class="icon-button" data-theme-toggle aria-label="Toggle theme">
+      <Icon name="moon" data-theme-icon="moon" />
+      <Icon name="sun" data-theme-icon="sun" />
+    </button>
+  </div>
+</header>
+
+<script>
+  const STORAGE_KEY = "theme";
+
+  // The initial theme is applied by the inline script in the page <head> (to
+  // avoid a flash of the wrong theme), so we only read it back from <html>.
+  const currentTheme = () => document.documentElement.dataset.theme ?? "light";
+
+  const toggle = document.querySelector("[data-theme-toggle]");
+
+  const labelToggle = () => {
+    const label = `Switch to ${currentTheme() === "dark" ? "light" : "dark"} theme`;
+    toggle.setAttribute("aria-label", label);
+    toggle.title = label;
+  };
+
+  labelToggle();
+  toggle.addEventListener("click", () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      // Storage can be unavailable (private mode); the toggle still works.
+    }
+    labelToggle();
+  });
+
+  // Mark the nav link for the section currently in the middle of the viewport.
+  const links = document.querySelectorAll(".header__link");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.find((entry) => entry.isIntersecting);
+      if (!visible) return;
+      links.forEach((link) => {
+        if (link.dataset.section === visible.target.id) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  );
+
+  links.forEach((link) => {
+    const section = document.getElementById(link.dataset.section);
+    if (section) observer.observe(section);
+  });
+</script>

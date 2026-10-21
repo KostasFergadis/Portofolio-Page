@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import { leads, projects } from "../data/content";
+import Icon from "./Icon.astro";
+import Section from "./Section.astro";
+import "./Projects.css";
+---
+
+<Section id="projects" lead={leads.projects} title="Projects" intro={projects.intro}>
+  <div class="projects">
+    {
+      projects.items.map(({ title, build, image, description, note, stack, links }) => (
+        <article class="project">
+          <Image
+            class="project__image"
+            src={image}
+            alt={`Screenshot of ${title}`}
+            width={1200}
+            height={630}
+            widths={[480, 960, 1200]}
+            sizes="(max-width: 960px) 100vw, 480px"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <div class="project__body">
+            <div class="project__head">
+              <h3 class="project__title">{title}</h3>
+              <p class="project__build">
+                <b>{build.value}</b>
+                {build.unit}
+              </p>
+            </div>
+            <p class="project__description">{description}</p>
+            {note && <p class="project__note">{note}</p>}
+            <p class="stack">
+              <span>Built with</span> {stack.join(", ")}
+            </p>
+
+            <div class="project__links">
+              {links.map(({ label, href }) => (
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  <Icon name={href.includes("github.com") ? "github" : "external"} size={15} />
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</Section>

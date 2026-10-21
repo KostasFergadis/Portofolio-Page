@@ -1,0 +1,29 @@
+---
+import { leads, skills } from "../data/content";
+import Section from "./Section.astro";
+import "./Skills.css";
+---
+
+<Section
+  id="skills"
+  lead={leads.skills}
+  title="Skills"
+  intro="Tagged in yellow: what I work with every day."
+>
+  <dl class="skills">
+    {
+      skills.groups.map(({ title, items }) => (
+        <div class="skills__row">
+          <dt class="skills__title">{title}</dt>
+          <dd class="skills__items">
+            <ul>
+              {items.map((item) => (
+                <li class={skills.core.includes(item) ? "is-core" : undefined}>{item}</li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</Section>
