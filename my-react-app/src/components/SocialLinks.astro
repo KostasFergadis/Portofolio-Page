@@ -1,28 +1,29 @@
+---
 import { profile } from "../data/content";
-import Icon from "./Icon";
+import Icon from "./Icon.astro";
 
 const links = [
   { icon: "github", label: "GitHub", href: profile.links.github },
   { icon: "linkedin", label: "LinkedIn", href: profile.links.linkedin },
   { icon: "mail", label: "Email", href: `mailto:${profile.email}` },
 ];
+---
 
-const SocialLinks = () => (
-  <ul className="social-links">
-    {links.map(({ icon, label, href }) => (
-      <li key={label}>
+<ul class="social-links">
+  {
+    links.map(({ icon, label, href }) => (
+      <li>
         <a
-          className="icon-button"
+          class="icon-button"
           href={href}
           aria-label={label}
           title={label}
-          {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+          target={href.startsWith("http") ? "_blank" : undefined}
+          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
         >
           <Icon name={icon} />
         </a>
       </li>
-    ))}
-  </ul>
-);
-
-export default SocialLinks;
+    ))
+  }
+</ul>

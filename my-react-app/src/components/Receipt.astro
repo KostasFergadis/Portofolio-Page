@@ -1,0 +1,72 @@
+---
+import { profile, receipt } from "../data/content";
+import "./Receipt.css";
+
+const rowGroups = [receipt.roles, receipt.items];
+---
+
+<aside class="printer" aria-label="Summary">
+  <div class="printer__slot" aria-hidden="true"></div>
+  <div class="printer__output">
+    <div class="receipt" data-sway>
+      <p class="receipt__head">
+        <strong>{profile.name}</strong>
+        <br />
+        {profile.role}
+        <br />
+        {profile.location}
+      </p>
+
+      {
+        rowGroups.map((rows) => (
+          <dl class="receipt__rows">
+            {rows.map(({ label, value }) => (
+              <div class="receipt__row">
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        ))
+      }
+
+      <div class="receipt__row receipt__total">
+        <span>Total</span>
+        <span>{receipt.total}</span>
+      </div>
+
+      <p class="receipt__thanks">{receipt.thanks}</p>
+
+      <div class="receipt__barcode" aria-hidden="true"></div>
+      <a class="receipt__email" href={`mailto:${profile.email}`}>
+        {profile.email}
+      </a>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const MAX_ANGLE = 4; // degrees
+
+  // Tilts the receipt toward the pointer by writing a `--sway` CSS variable.
+  // Skipped for touch devices and for people who prefer reduced motion.
+  const element = document.querySelector("[data-sway]");
+  const canSway = matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)");
+
+  if (element && canSway.matches) {
+    let frame = 0;
+    window.addEventListener(
+      "pointermove",
+      (event) => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          const { left, width } = element.getBoundingClientRect();
+          const offset = (event.clientX - (left + width / 2)) / (window.innerWidth / 2);
+          const angle = Math.max(-1, Math.min(1, offset)) * MAX_ANGLE;
+          element.style.setProperty("--sway", `${angle.toFixed(2)}deg`);
+        });
+      },
+      { passive: true },
+    );
+  }
+</script>

@@ -1,3 +1,15 @@
+---
+import { profile } from "../data/content";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import "../styles/global.css";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,12 +36,14 @@
     />
 
     <!-- Apply the saved (or OS) theme before first paint to avoid a flash. -->
-    <script>
+    <script is:inline>
       (() => {
         let theme;
         try {
           theme = localStorage.getItem("theme");
-        } catch {}
+        } catch {
+          // Storage can be unavailable (private mode); fall back to the OS theme.
+        }
         if (theme !== "light" && theme !== "dark") {
           theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         }
@@ -38,7 +52,23 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <Hero />
+      <About />
+      <Experience />
+      <Skills />
+      <Projects />
+      <Contact />
+    </main>
+    <footer class="footer container">
+      © <span data-year>{new Date().getFullYear()}</span> {profile.name}
+    </footer>
+
+    <script>
+      // The year is rendered at build time; refresh it so it never goes stale.
+      document.querySelector("[data-year]").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

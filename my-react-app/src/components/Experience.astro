@@ -1,0 +1,32 @@
+---
+import { leads, experience } from "../data/content";
+import Section from "./Section.astro";
+import "./Experience.css";
+---
+
+<Section id="experience" lead={leads.experience} title="Experience">
+  <ol class="timeline">
+    {
+      experience.map((job) => (
+        <li class="timeline__item">
+          <h3 class="timeline__role">
+            {job.role}, <span class="timeline__company">{job.company}</span>
+          </h3>
+          <p class="timeline__meta">
+            {job.period}, {job.location}
+          </p>
+
+          <ul class="timeline__highlights">
+            {job.highlights.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+
+          <p class="stack">
+            <span>Built with</span> {job.stack.join(", ")}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
